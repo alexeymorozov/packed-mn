@@ -76,7 +76,9 @@ unless Gem.win_platform? # because on windows we use ocra
 
     # http://tech.tulentsev.com/2012/02/ruby-how-to-override-class-method-with-a-module/
     def self.map_library_name(lib)
-      map_library_name_orig(extract_memfs(lib))
+      extracted = extract_memfs(lib)
+      puts "map_library_name(#{lib}) => #{extracted}"
+      map_library_name_orig(extracted)
     end
   end
   # END of HACK
