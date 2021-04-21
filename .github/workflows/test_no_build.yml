@@ -17,6 +17,8 @@ jobs:
       matrix:
         ruby:
           - 2.4.1
+          - 2.4.3
+          - 2.4.4
           - 2.4.7
           - 2.4.9
           - 2.4.10
@@ -40,4 +42,5 @@ jobs:
         cd tmp
         bundle install
         git clone --recurse-submodules https://github.com/metanorma/mn-samples-iso iso
+        chmod +x metanorma
         ./metanorma site generate iso -c iso/metanorma.yml -o site/iso --agree-to-terms
