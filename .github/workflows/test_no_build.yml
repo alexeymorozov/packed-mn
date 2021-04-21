@@ -35,12 +35,8 @@ jobs:
 
     - name: Setup working dir
       run: |
-        mkdir tmp
-        cp Gemfile* tmp
-        cp bin/metanorma tmp
-        cp -R vendor tmp
-        cd tmp
-        bundle install
-        git clone --recurse-submodules https://github.com/metanorma/mn-samples-iso iso
+        cp bin/metanorma .
         chmod +x metanorma
-        ./metanorma site generate iso -c iso/metanorma.yml -o site/iso --agree-to-terms
+        git clone --recurse-submodules https://github.com/metanorma/mn-samples-iso build/iso
+
+    - run: ./metanorma site generate build/iso -c build/iso/metanorma.yml -o build/site/iso --agree-to-terms
